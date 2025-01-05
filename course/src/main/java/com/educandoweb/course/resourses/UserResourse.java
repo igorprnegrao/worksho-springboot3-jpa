@@ -12,7 +12,7 @@ import com.educandoweb.course.entities.User;
 @RequestMapping(value = "/users") //  nome para o recurso /caminho para entidade users 
 public class UserResourse {
 	
-	@GetMapping
+	@GetMapping  // ??
 	public ResponseEntity<User> findAll() {
 		User u = new User(1L, "Maria", "maria@gmail.com", "(91)9999-9999", "123456");
 		
