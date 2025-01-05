@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Profile;
 // classe para povoar BD (data base seeding)
 
 import com.educandoweb.course.entities.User;
+import com.educandoweb.course.repositories.OrderRepository;
 import com.educandoweb.course.repositories.UserRepository;
 
 @Configuration // declarar a classe como configuração
@@ -18,6 +19,9 @@ public class TestConfig implements CommandLineRunner {
 	private UserRepository userRepository; //injeção de dependencia User - testconfig
 	//implementar o commandLineRunner para executar o cód quando a app inciar
 	//método para executar o cód
+	@Autowired
+	private OrderRepository orderRepository;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		
