@@ -3,11 +3,22 @@ package com.educandoweb.course.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+
+@Entity // JPA = classifico para o JPA que a classe user é uma entidade relacional
+@Table(name = "tb_user") // renomeio o nome da tabela 
 //serializable para o objeto trafegar na rede/ transformar em arquivo
 public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Id // indico quem é o id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //id auto-incremento 
 	private long id;
 	private String name;
 	private String emial;
