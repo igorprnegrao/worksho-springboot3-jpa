@@ -9,32 +9,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.educandoweb.course.entities.Product;
 import com.educandoweb.course.entities.User;
-import com.educandoweb.course.services.UserService;
+import com.educandoweb.course.services.ProductService;
 
-
-
-@RestController //@RestController é melhor usado quando você quer retornar 
-// dados (por exemplo, JSON ou XML) ENDPOINT
-@RequestMapping(value = "/users") // é usada para mapear URLs para métodos 
-//específicos em controladores 
-public class UserResourse {
+@RestController
+@RequestMapping(value = "/products")
+public class ProductResourse {
 	@Autowired
-	private UserService userService;
+	private ProductService productService;
 	
 	@GetMapping  // annotation = mapeia apenas requisições do tipo GET
-	public ResponseEntity<List<User>> findAll() {
-		List<User> list = userService.findAll();
+	public ResponseEntity<List<Product>> findAll() {
+		List<Product> list = productService.findAll();
 		
 		
 		return ResponseEntity.ok().body(list);
 	};
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<User> findById(@PathVariable Long id){
-		User obj = userService.FindById(id);
+	public ResponseEntity<Product> findById(@PathVariable Long id){
+		Product obj = productService.FindById(id);
 		return ResponseEntity.ok().body(obj);
 	}
-	
 	
 }
