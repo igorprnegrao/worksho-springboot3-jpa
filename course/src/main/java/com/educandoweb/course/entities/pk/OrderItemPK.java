@@ -7,13 +7,18 @@ import com.educandoweb.course.entities.Order;
 import com.educandoweb.course.entities.Product;
 
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 // classe auxiliar chave composta
 @Embeddable // rotula a classe como chave composta
 public class OrderItemPK implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	
+	@ManyToOne
+	@JoinColumn(name = "order_id")
 	private Order order;
+	@ManyToOne
+	@JoinColumn(name = "product_id")
 	private Product product;
 	
 	
