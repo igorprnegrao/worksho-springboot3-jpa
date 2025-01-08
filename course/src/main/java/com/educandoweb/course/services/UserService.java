@@ -12,14 +12,18 @@ import com.educandoweb.course.repositories.UserRepository;
 public class UserService {
 	@Autowired
 	private UserRepository userRepository;
-	
+	//metodo para recuperar tudo
 	public List<User> findAll(){
 		return userRepository.findAll();
 		
 	}
-	
+	//metodo para recupera pelo id 
 	public User FindById(Long id) {
 		Optional<User> obj = userRepository.findById(id);
 		return obj.get();
+	}
+	//metodo para inserir
+	public User insert(User obj) {
+		return userRepository.save(obj);
 	}
 }
