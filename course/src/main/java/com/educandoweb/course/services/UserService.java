@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.educandoweb.course.entities.User;
 import com.educandoweb.course.repositories.UserRepository;
+import com.educandoweb.course.services.exceptions.ResourceNotFoundException;
 @Service
 public class UserService {
 	@Autowired
@@ -20,7 +21,7 @@ public class UserService {
 	//metodo para recupera pelo id 
 	public User FindById(Long id) {
 		Optional<User> obj = userRepository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	//metodo para inserir
 	public User insert(User obj) {
